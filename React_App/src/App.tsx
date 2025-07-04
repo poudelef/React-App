@@ -4,6 +4,7 @@ function App() {
   return (
     <div>
       <ListGroup></ListGroup>
+      <ListGroup></ListGroup>
     </div>
   );
 }
