@@ -1,5 +1,7 @@
 import Alert from "./components/Alert.tsx";
 import ListGroup from "./components/ListGroup.tsx";
+import Buttons from "./components/Buttons.tsx";
+import { useState } from "react";
 
 function App() {
   let items = ["New York", "San Francisco", "Tokyo", "London", "Paris"];
@@ -7,7 +9,7 @@ function App() {
     console.log(item);
   };
 
-  let text = "Hollow world";
+  const [alertVisible, setAlertVisible] = useState(false);
 
   return (
     <div>
@@ -16,10 +18,24 @@ function App() {
         heading="Cities"
         onSelectItem={handleSelectITem}
       ></ListGroup>
-      <Alert>
-        {" "}
-        Hello <h1>world</h1>
-      </Alert>
+      {alertVisible && (
+        <Alert
+          onClose={() => {
+            setAlertVisible(false);
+          }}
+        >
+          {" "}
+          My Button{" "}
+        </Alert>
+      )}
+      <Buttons
+        color="dark"
+        onClick={() => {
+          setAlertVisible(true);
+        }}
+      >
+        My Button
+      </Buttons>
     </div>
   );
 }
