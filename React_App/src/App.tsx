@@ -1,3 +1,4 @@
+import Alert from "./components/Alert.tsx";
 import ListGroup from "./components/ListGroup.tsx";
 
 function App() {
@@ -5,6 +6,9 @@ function App() {
   const handleSelectITem = (item: string) => {
     console.log(item);
   };
+
+  let text = "Hollow world";
+
   return (
     <div>
       <ListGroup
@@ -12,6 +16,10 @@ function App() {
         heading="Cities"
         onSelectItem={handleSelectITem}
       ></ListGroup>
+      <Alert>
+        {" "}
+        Hello <h1>world</h1>
+      </Alert>
     </div>
   );
 }
