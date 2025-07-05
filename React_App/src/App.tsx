@@ -1,10 +1,10 @@
 import ListGroup from "./components/ListGroup.tsx";
 
 function App() {
+  let items = ["New York", "San Francisco", "Tokyo", "London", "Paris"];
   return (
     <div>
-      <ListGroup></ListGroup>
-      <ListGroup></ListGroup>
+      <ListGroup items={items} heading="Cities"></ListGroup>
     </div>
   );
 }
