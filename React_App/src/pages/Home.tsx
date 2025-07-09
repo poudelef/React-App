@@ -1,6 +1,9 @@
 import MovieCard from "../components/MovieCard";
+import { useState } from "react";
 
 const Home = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+
   const movies = [
     {
       id: 1,
@@ -21,12 +24,32 @@ const Home = () => {
       url: "https://example.com/interstellar.jpg",
     },
   ];
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    alert(setSearchTerm);
+    setSearchTerm("");
+  };
   return (
     <div className="Home">
+      <form onSubmit={handleSearch} className="search-form">
+        <input
+          type="text"
+          placeholder="Searhc for movies"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        ></input>{" "}
+        <button type="submit" className="search-button">
+          Search
+        </button>
+      </form>
       <div className="movies-grid">
-        {movies.map((movie) => (
-          <MovieCard key={movie.id} movie={movie} />
-        ))}
+        {movies.map(
+          (movie) =>
+            movie.title.toLowerCase().startsWith(searchTerm) && (
+              <MovieCard key={movie.id} movie={movie} />
+            )
+        )}
       </div>
     </div>
   );
